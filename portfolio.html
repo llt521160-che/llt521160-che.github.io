@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的机械档案馆 | Che's Archive</title>
+    <style>
+        /* --- 蒸汽朋克核心样式 --- */
+        :root {
+            --bg-color: #121212;
+            --brass-dark: #8c7345;
+            --brass-light: #d4af37;
+            --steam-glow: rgba(212, 175, 55, 0.6);
+            --text-color: #dcdcdc;
+            --paper-texture: #1a1a1a;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            background-image: radial-gradient(circle at 50% 50%, #1e1e1e 0%, #000000 100%);
+            color: var(--text-color);
+            font-family: "Courier New", Courier, monospace;
+            margin: 0;
+            padding: 20px;
+        }
+
+        /* 顶部标题区 */
+        header {
+            text-align: center;
+            padding: 60px 0;
+            border-bottom: 2px solid var(--brass-dark);
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: var(--brass-light);
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            text-shadow: 0 0 10px var(--steam-glow);
+            margin: 0;
+        }
+
+        p.subtitle {
+            color: #888;
+            font-size: 0.9rem;
+            margin-top: 10px;
+        }
+
+        /* ⚙️ 装饰性齿轮 */
+        .gear {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 40px;
+            animation: spin 10s linear infinite;
+            opacity: 0.3;
+        }
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+
+        /* --- 瀑布流布局 --- */
+        .masonry-container {
+            column-count: 3;
+            column-gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* --- 作品卡片设计 --- */
+        .card {
+            background: var(--paper-texture);
+            border: 2px solid var(--brass-dark);
+            border-radius: 4px;
+            margin-bottom: 20px;
+            break-inside: avoid;
+            position: relative;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            cursor: pointer;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.5);
+        }
+
+        .card:hover {
+            transform: scale(1.03) translateY(-5px);
+            border-color: var(--brass-light);
+            box-shadow: 0 0 25px var(--steam-glow), inset 0 0 10px var(--brass-dark);
+            z-index: 10;
+        }
+
+        .card img {
+            width: 100%;
+            display: block;
+            border-bottom: 1px solid var(--brass-dark);
+            filter: sepia(30%) contrast(110%);
+            transition: filter 0.3s;
+        }
+
+        .card:hover img {
+            filter: sepia(0%) contrast(100%);
+        }
+
+        .card-content {
+            padding: 15px;
+        }
+
+        .card-title {
+            font-size: 1.1rem;
+            color: var(--brass-light);
+            margin: 0 0 8px 0;
+            font-weight: bold;
+        }
+
+        .card-desc {
+            font-size: 0.85rem;
+            color: #aaa;
+            line-height: 1.4;
+        }
+
+        /* --- 标签角标 --- */
+        .badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #000;
+            border: 1px solid var(--brass-light);
+            color: var(--brass-light);
+            padding: 2px 8px;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.8);
+        }
+
+        @media (max-width: 768px) {
+            .masonry-container { column-count: 1; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="gear">⚙️</div>
+        <h1>WORKS ARCHIVE</h1>
+        <p class="subtitle">Che's Portfolio / EST. 2026</p>
+    </header>
+
+    <div class="masonry-container">
+        
+        <div class="card" onclick="window.open('https://www.bilibili.com', '_blank')">
+            <span class="badge">VIDEO</span>
+            <img src="https://picsum.photos/400/300?grayscale" alt="封面">
+            <div class="card-content">
+                <h3 class="card-title">示例：机械心脏演示</h3>
+                <p class="card-desc">点击跳转到 B站观看视频。</p>
+            </div>
+        </div>
+
+        <div class="card" onclick="window.open('https://www.zcool.com.cn', '_blank')">
+            <span class="badge">IMAGE SET</span>
+            <img src="https://picsum.photos/400/500?sepia" alt="封面">
+            <div class="card-content">
+                <h3 class="card-title">示例：赛博人设图</h3>
+                <p class="card-desc">点击跳转查看完整套图。</p>
+            </div>
+        </div>
+
+        <div class="card" onclick="window.open('#', '_blank')">
+            <span class="badge">PPT</span>
+            <img src="https://picsum.photos/400/400?blur" alt="封面">
+            <div class="card-content">
+                <h3 class="card-title">示例：策划方案</h3>
+                <p class="card-desc">PDF 格式存档。</p>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
